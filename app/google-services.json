@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1055452382259",
+    "project_id": "futemax-apostas-slots",
+    "storage_bucket": "futemax-apostas-slots.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055452382259:android:b8bcb371cb7ac2ba4acf46",
+        "android_client_info": {
+          "package_name": "futemax.futemaxapostas.futemaxapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055452382259-toegs7hi08sec9qt8vd79u5eggfi4u49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC79c-tsTYpfRx3ZCuLkMg8GcpZ4nampb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055452382259-toegs7hi08sec9qt8vd79u5eggfi4u49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
