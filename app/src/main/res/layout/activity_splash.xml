@@ -21,9 +21,10 @@
         app:layout_constraintWidth_percent="0.7">
 
         <ImageView
+            android:scaleType="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/futemax" />
+            android:src="@drawable/img" />
     </androidx.cardview.widget.CardView>
 
     <ProgressBar

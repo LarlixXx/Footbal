@@ -27,19 +27,15 @@ class SplashActivity : AppCompatActivity() {
 
         get()
         val timer = object : CountDownTimer(2000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-
-            }
-
+            override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                val intent = Intent(applicationContext, MainActivity::class.java)
+                val intentGame = Intent(applicationContext, MainActivity::class.java)
                 val intentWeb = Intent(applicationContext, WebView::class.java)
-                if (flag == 0) {
-                    startActivity(intent)
-                } else {
+                if (flag == 1) {
                     startActivity(intentWeb)
+                } else {
+                    startActivity(intentGame)
                 }
-
             }
         }
         timer.start()
