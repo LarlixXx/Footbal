@@ -9,16 +9,16 @@
 
 
     <Button
-        android:id="@+id/startgame"
+        android:id="@+id/btn_start"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/btn_shape"
         android:fontFamily="@font/muller"
         android:padding="15dp"
-        android:text="START GAME"
+        android:text="@string/textview_start_game"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintTop_toBottomOf="@id/ball"
+        app:layout_constraintTop_toBottomOf="@id/center_ball"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.08"
@@ -26,83 +26,117 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/ball"
+        android:id="@+id/center_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:src="@drawable/ball"
-        app:layout_constraintBottom_toTopOf="@id/startgame"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vor" />
+        app:layout_constraintTop_toBottomOf="@id/vor"
+        android:contentDescription="@string/ball_img_name" />
 
     <ImageView
-        android:id="@+id/ballr"
+        android:id="@+id/left_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:src="@drawable/ball"
-        app:layout_constraintBottom_toTopOf="@id/startgame"
-        app:layout_constraintEnd_toStartOf="@id/ball"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
+        app:layout_constraintEnd_toStartOf="@id/center_ball"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vor" />
+        app:layout_constraintTop_toBottomOf="@id/vor"
+        android:contentDescription="@string/ball_img_name" />
 
     <ImageView
-        android:id="@+id/balll"
+        android:id="@+id/right_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
+        android:visibility="invisible"
         android:scaleX="0.8"
         android:scaleY="0.8"
-        app:layout_constraintBottom_toTopOf="@id/startgame"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
         android:src="@drawable/ball"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ball"
-        app:layout_constraintTop_toBottomOf="@id/vor" />
+        app:layout_constraintStart_toEndOf="@id/center_ball"
+        app:layout_constraintTop_toBottomOf="@id/vor"
+        android:contentDescription="@string/ball_img_name" />
 
     <ImageView
         android:id="@+id/vor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/vor"
-        app:layout_constraintTop_toBottomOf="@id/mgoal"
-        app:layout_constraintBottom_toTopOf="@+id/ball"
+        app:layout_constraintTop_toBottomOf="@id/text_miss_goal"
+        app:layout_constraintBottom_toTopOf="@+id/center_ball"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ball_img_name" />
 
     <TextView
-        android:id="@+id/mgoal"
+        android:id="@+id/text_miss_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/muller"
-        android:text="miss"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/vor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypoints" />
+        app:layout_constraintTop_toBottomOf="@+id/text_points" />
 
     <TextView
-        android:id="@+id/mypoints"
+        android:id="@+id/text_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/muller"
         android:textSize="25dp"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
-        android:text="MY POINTS IS"
+        android:text="@string/start_points_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cball"
+        android:id="@+id/center_ball_red"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.18"
+        app:layout_constraintDimensionRatio="1:1"
+        app:cardCornerRadius="100dp"
+        android:alpha="0.6"
+        android:visibility="invisible"
+        app:cardBackgroundColor="@color/miss"
+        app:layout_constraintBottom_toBottomOf="@+id/vor"
+        app:layout_constraintEnd_toEndOf="@+id/vor"
+        app:layout_constraintStart_toStartOf="@+id/vor"
+        app:layout_constraintTop_toTopOf="@+id/vor"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/left_ball_red"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintWidth_percent="0.18"
+        app:layout_constraintDimensionRatio="1:1"
+        app:cardCornerRadius="100dp"
+        android:alpha="0.6"
+        app:cardBackgroundColor="@color/miss"
+        app:layout_constraintBottom_toBottomOf="@+id/vor"
+        app:layout_constraintEnd_toStartOf="@+id/center_ball_red"
+        app:layout_constraintStart_toStartOf="@+id/vor"
+        app:layout_constraintTop_toTopOf="@+id/vor"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/right_ball_red"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
         app:layout_constraintWidth_percent="0.18"
         app:layout_constraintDimensionRatio="1:1"
         app:cardCornerRadius="100dp"
@@ -110,33 +144,7 @@
         app:cardBackgroundColor="@color/miss"
         app:layout_constraintBottom_toBottomOf="@+id/vor"
         app:layout_constraintEnd_toEndOf="@+id/vor"
-        app:layout_constraintStart_toStartOf="@+id/vor"
-        app:layout_constraintTop_toTopOf="@+id/vor"/>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/lball"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.18"
-        app:layout_constraintDimensionRatio="1:1"
-        app:cardCornerRadius="100dp"
-        android:alpha="0.6"
-        app:cardBackgroundColor="@color/miss"
-        app:layout_constraintBottom_toBottomOf="@+id/vor"
-        app:layout_constraintEnd_toStartOf="@+id/cball"
-        app:layout_constraintStart_toStartOf="@+id/vor"
-        app:layout_constraintTop_toTopOf="@+id/vor"/>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/rball"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.18"
-        app:layout_constraintDimensionRatio="1:1"
-        app:cardCornerRadius="100dp"
-        android:alpha="0.6"
-        app:cardBackgroundColor="@color/miss"
-        app:layout_constraintBottom_toBottomOf="@+id/vor"
-        app:layout_constraintEnd_toEndOf="@+id/vor"
-        app:layout_constraintStart_toEndOf="@+id/cball"
+        app:layout_constraintStart_toEndOf="@+id/center_ball_red"
         app:layout_constraintTop_toTopOf="@+id/vor"/>
 
 
