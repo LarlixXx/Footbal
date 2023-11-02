@@ -3,7 +3,6 @@ package com.kya.saft.fa.awr.fas.apos.tass.lots
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 
 class WebView : AppCompatActivity() {
@@ -16,7 +15,7 @@ class WebView : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         actionBar?.hide()
 
-        webView= findViewById(R.id.webView)
+        webView = findViewById(R.id.webView)
         webView.webViewClient = MyWebViewClient()
         webView.settings.javaScriptEnabled = true
         webView.settings.userAgentString = Data.userAgent

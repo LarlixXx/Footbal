@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.textPoints.text = "MY POINTS IS $pointsSumm"
 
         fun rand(start: Int, end: Int): Int {
@@ -27,56 +26,63 @@ class MainActivity : AppCompatActivity() {
             val rand = Random(System.nanoTime())
             return (start..end).random(rand)
         }
-        fun redBallsVisible(request:Int){
-            if(request==1){
+
+        fun redBallsVisible(request: Int) {
+            if (request == 1) {
                 binding.leftBallRed.visibility = View.VISIBLE
                 binding.centerBallRed.visibility = View.VISIBLE
                 binding.rightBallRed.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.leftBallRed.visibility = View.INVISIBLE
                 binding.centerBallRed.visibility = View.INVISIBLE
                 binding.rightBallRed.visibility = View.INVISIBLE
             }
 
         }
-        fun ballsVisible(request:Int){
-            if(request==1){
+
+        fun ballsVisible(request: Int) {
+            if (request == 1) {
                 binding.rightBall.visibility = View.VISIBLE
                 binding.leftBall.visibility = View.VISIBLE
                 binding.centerBall.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.rightBall.visibility = View.INVISIBLE
                 binding.leftBall.visibility = View.INVISIBLE
                 binding.centerBall.visibility = View.INVISIBLE
             }
         }
-        fun setRedBackgroundBall(){
+
+        fun setRedBackgroundBall() {
             binding.rightBallRed.background = (getResources().getDrawable(R.drawable.cball))
             binding.centerBallRed.background = (getResources().getDrawable(R.drawable.cball))
             binding.leftBallRed.background = (getResources().getDrawable(R.drawable.cball))
         }
-        fun controlRedBalls(request:Int){
-            if (request == 1){
-            binding.leftBallRed.isEnabled = false
-            binding.centerBallRed.isEnabled = false
-            binding.rightBallRed.isEnabled = false
-            }else{
+
+        fun controlRedBalls(request: Int) {
+            if (request == 1) {
+                binding.leftBallRed.isEnabled = false
+                binding.centerBallRed.isEnabled = false
+                binding.rightBallRed.isEnabled = false
+            } else {
                 binding.leftBallRed.isEnabled = true
                 binding.centerBallRed.isEnabled = true
                 binding.rightBallRed.isEnabled = true
             }
         }
-        fun win(count:Int = 1){
+
+        fun win(count: Int = 1) {
             pointsSumm += count
             binding.textPoints.text = "MY POINTS IS $pointsSumm"
             binding.textMissGoal.text = "Hit"
             binding.textMissGoal.setTextColor(getResources().getColor(R.color.goal))
         }
-        fun lose(){
+
+        fun lose() {
             binding.textMissGoal.text = "Miss"
             binding.textMissGoal.setTextColor(getResources().getColor(R.color.miss))
         }
-        fun punch(){
+
+        fun punch() {
             binding.btnStart.alpha = 1.0F
             binding.btnStart.isEnabled = true
             controlRedBalls(1)
@@ -110,9 +116,12 @@ class MainActivity : AppCompatActivity() {
                         binding.centerBallRed.alpha = 1.0F
                         binding.rightBallRed.alpha = 1.0F
 
-                        binding.leftBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                        binding.centerBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                        binding.rightBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                        binding.leftBallRed.background =
+                            (getResources().getDrawable(R.drawable.ball))
+                        binding.centerBallRed.background =
+                            (getResources().getDrawable(R.drawable.ball))
+                        binding.rightBallRed.background =
+                            (getResources().getDrawable(R.drawable.ball))
                     }
                 }
                 timer.start()

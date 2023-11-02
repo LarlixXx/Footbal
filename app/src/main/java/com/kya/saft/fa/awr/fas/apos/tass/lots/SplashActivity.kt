@@ -2,9 +2,9 @@ package com.kya.saft.fa.awr.fas.apos.tass.lots
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import androidx.appcompat.app.AppCompatActivity
 import com.facebook.FacebookSdk
 import com.onesignal.OneSignal
 import okhttp3.*
@@ -25,10 +25,8 @@ class SplashActivity : AppCompatActivity() {
         FacebookSdk.setAutoInitEnabled(true)
         FacebookSdk.fullyInitialize()
 
-
-
         get()
-        val timer = object: CountDownTimer(2000, 1000) {
+        val timer = object : CountDownTimer(2000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
             }
@@ -36,9 +34,9 @@ class SplashActivity : AppCompatActivity() {
             override fun onFinish() {
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 val intentWeb = Intent(applicationContext, WebView::class.java)
-                if (flag ==0){
+                if (flag == 0) {
                     startActivity(intent)
-                }else{
+                } else {
                     startActivity(intentWeb)
                 }
 
@@ -47,7 +45,8 @@ class SplashActivity : AppCompatActivity() {
         timer.start()
 
     }
-    fun get(){
+
+    fun get() {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Data.url)
@@ -60,12 +59,13 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 response.use {
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         flag = 1
-                    }else{
+                    } else {
                         flag = 0
                     }
                 }
             }
-        })}
+        })
+    }
 }
