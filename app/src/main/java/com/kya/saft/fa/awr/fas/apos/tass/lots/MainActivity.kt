@@ -27,18 +27,6 @@ class MainActivity : AppCompatActivity() {
             return (start..end).random(rand)
         }
 
-        fun redBallsVisible(request: Int) {
-            if (request == 1) {
-                binding.leftBallRed.visibility = View.VISIBLE
-                binding.centerBallRed.visibility = View.VISIBLE
-                binding.rightBallRed.visibility = View.VISIBLE
-            } else {
-                binding.leftBallRed.visibility = View.INVISIBLE
-                binding.centerBallRed.visibility = View.INVISIBLE
-                binding.rightBallRed.visibility = View.INVISIBLE
-            }
-
-        }
 
         fun ballsVisible(request: Int) {
             if (request == 1) {
@@ -52,10 +40,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun setRedBackgroundBall() {
-            binding.rightBallRed.background = (getResources().getDrawable(R.drawable.cball))
-            binding.centerBallRed.background = (getResources().getDrawable(R.drawable.cball))
-            binding.leftBallRed.background = (getResources().getDrawable(R.drawable.cball))
+        fun setBackgroundBall(background:String, position:String) {
+            if(background == "red"){
+                when(position){
+                    "left" -> binding.leftBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                    "center" -> binding.centerBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                    "right" -> binding.rightBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                    "all" ->{
+                        binding.rightBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                        binding.centerBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                        binding.leftBallRed.background = (getResources().getDrawable(R.drawable.cball))
+                    }
+                }
+            }else if(background == "ball"){
+                when(position){
+                    "left" -> binding.leftBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                    "center" -> binding.centerBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                    "right" -> binding.rightBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                    "all" ->{
+                        binding.rightBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                        binding.centerBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                        binding.leftBallRed.background = (getResources().getDrawable(R.drawable.ball))
+                    }
+                }
+            }
+
         }
 
         fun controlRedBalls(request: Int) {
@@ -89,8 +98,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnStart.setOnClickListener {
-            redBallsVisible(1)
-            setRedBackgroundBall()
+            binding.leftBallRed.visibility = View.VISIBLE
+            binding.centerBallRed.visibility = View.VISIBLE
+            binding.rightBallRed.visibility = View.VISIBLE
+            setBackgroundBall("red","all")
             controlRedBalls(52)
 
             binding.btnStart.isEnabled = false
@@ -102,26 +113,21 @@ class MainActivity : AppCompatActivity() {
             if (pointsSumm % 5 == 0 && pointsSumm != 0) {
 
                 ballsVisible(1)
-                setRedBackgroundBall()
+                setBackgroundBall("red","all")
                 controlRedBalls(1)
                 binding.btnStart.isEnabled = false
 
                 val timer = object : CountDownTimer(3000, 1000) {
                     override fun onTick(millisUntilFinished: Long) {}
                     override fun onFinish() {
-                        ballsVisible(52)
+                        ballsVisible(0)
                         win(3)
 
                         binding.leftBallRed.alpha = 1.0F
                         binding.centerBallRed.alpha = 1.0F
                         binding.rightBallRed.alpha = 1.0F
 
-                        binding.leftBallRed.background =
-                            (getResources().getDrawable(R.drawable.ball))
-                        binding.centerBallRed.background =
-                            (getResources().getDrawable(R.drawable.ball))
-                        binding.rightBallRed.background =
-                            (getResources().getDrawable(R.drawable.ball))
+                        setBackgroundBall("ball","all")
                     }
                 }
                 timer.start()
@@ -130,44 +136,35 @@ class MainActivity : AppCompatActivity() {
 
         binding.leftBallRed.setOnClickListener {
             punch()
+            setBackgroundBall("ball","left")
+            binding.leftBallRed.alpha = 1.0F
+            binding.centerBall.visibility = View.INVISIBLE
             if (rand(start, end) == 1 or 2) {
-                binding.leftBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.leftBallRed.alpha = 1.0F
                 win()
-                binding.centerBall.visibility = View.INVISIBLE
             } else {
-                binding.leftBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.leftBallRed.alpha = 1.0F
-                binding.centerBall.visibility = View.INVISIBLE
                 lose()
             }
         }
 
         binding.centerBallRed.setOnClickListener {
             punch()
+            setBackgroundBall("ball","center")
+            binding.centerBallRed.alpha = 1.0F
+            binding.centerBall.visibility = View.INVISIBLE
             if (rand(start, end) == 1 or 2) {
-                binding.centerBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.centerBallRed.alpha = 1.0F
                 win()
-                binding.leftBall.visibility = View.INVISIBLE
             } else {
-                binding.centerBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.centerBallRed.alpha = 1.0F
-                binding.centerBall.visibility = View.INVISIBLE
                 lose()
             }
         }
         binding.rightBallRed.setOnClickListener {
             punch()
+            setBackgroundBall("ball","right")
+            binding.rightBallRed.alpha = 1.0F
+            binding.centerBall.visibility = View.INVISIBLE
             if (rand(start, end) == 1 or 2) {
-                binding.rightBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.rightBallRed.alpha = 1.0F
                 win()
-                binding.centerBall.visibility = View.INVISIBLE
             } else {
-                binding.rightBallRed.background = (getResources().getDrawable(R.drawable.ball))
-                binding.rightBallRed.alpha = 1.0F
-                binding.centerBall.visibility = View.INVISIBLE
                 lose()
             }
         }
